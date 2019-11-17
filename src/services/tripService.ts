@@ -15,7 +15,7 @@ export interface Trip {
   }>
 }
 
-const ENTRYPOINT = 'http://localhost:4000/api'
+const ENTRYPOINT = 'https://hidden-crag-93128.herokuapp.com/api'
 
 export const getTripsForDest = (destinationId: string): Promise<Trip[]> => axios
   .get(`${ENTRYPOINT}/trips/${destinationId}`)

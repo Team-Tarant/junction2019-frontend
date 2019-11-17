@@ -13,7 +13,7 @@ export interface Visitors {
   visitors: number;
 }
 
-const ENTRYPOINT = "http://localhost:4000/api";
+const ENTRYPOINT = "https://hidden-crag-93128.herokuapp.com/api";
 
 export const getDestinations = (): Promise<Destination[]> =>
   axios.get(`${ENTRYPOINT}/destinations`).then(({ data }) => data);
