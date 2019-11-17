@@ -36,7 +36,7 @@
   justify-content: center;
   flex-direction: row;
   border-radius: 2px;
-  margin: 150px 0 0 0;
+  margin: 75px 0 0 0;
 }
 
 .destination-title {
@@ -95,7 +95,11 @@
 
   &.disabled {
     border: none;
-    background: rgba($color: #000000, $alpha: 0.5)
+    background: rgba($color: #000000, $alpha: 0.5);
+  }
+
+  &.hidden {
+    display: none;
   }
 }
 
@@ -165,4 +169,70 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.activities-expanded {
+  &.hidden {
+    display: none;
+  }
+
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #5cdb95;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.activity-item {
+  margin: 20px 0px 0px 0px;
+  padding: 15px;
+  background-color: #9db972;
+  width: 80%;
+  border-radius: 2px;
+  border: #379683 solid 5px;
+}
+
+.create-ride {
+  &.hidden {
+    display: none;
+  }
+
+  width: 100%;
+  height: 50px;
+  font-size: 25px;
+  background: linear-gradient(135deg, #379683, #05386b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 2px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.activity-name {
+  font-size: 30px;
+}
+
+.activity-sponsored {
+  margin-top: -15px;
+}
+
+.activity-book {
+  font-size: 20px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+  }
 }

@@ -118,6 +118,8 @@ const TripsCard = ({
   destinationName: string;
 }) => {
   const [trips, setTrips] = useState<Trip[]>([]);
+  const [activitiesExpanded, setActivitiesExpanded] = useState<boolean>(false);
+  const [dudeName, setDudeName] = useState("null");
   useEffect(() => {
     getTripsForDest(destinationId).then(setTrips);
   }, [destinationId]);
@@ -129,27 +131,80 @@ const TripsCard = ({
           const isFull = trip.participants.length >= trip.capacity;
           return (
             <li
-              className={`trip-item${isFull ? " danger" : ""}${trip.capacity <= trip.participants.length ? ' disabled' : ''}`}
+              className={`trip-item${isFull ? " danger" : ""}${
+                trip.capacity <= trip.participants.length ? " disabled" : ""
+              }${activitiesExpanded ? " hidden" : ""}`}
               onClick={() => {
-                if (trip.capacity <= trip.participants.length) return
+                if (trip.capacity <= trip.participants.length) return;
+                setDudeName(trip.driverName);
                 joinTrip(trip.id).then(() => {
                   getTripsForDest(destinationId).then(setTrips);
-                  alert("Trip booked!");
+                  setActivitiesExpanded(true);
                 });
               }}
             >
               <p className="trip-content">
                 {trip.driverName} is driving to {destinationName} from{" "}
-                {trip.from} at{" "}
-                {moment(trip.startToDestination).format("HH:mm")}
+                {trip.from} at {moment(trip.startToDestination).format("HH:mm")}
               </p>
               <p className="trip-status">
-                {isFull ? "Car is fully booked!" : `Slots left: ${trip.participants.length}/${trip.capacity}`}
+                {isFull
+                  ? "Car is fully booked!"
+                  : `Slots left: ${trip.participants.length}/${trip.capacity}`}
               </p>
             </li>
           );
         })}
       </ul>
+      <div className={`create-ride ${activitiesExpanded ? " hidden" : ""}`}>
+        Create a new ride
+      </div>
+      <ActivityList
+        hidden={activitiesExpanded}
+        destinationName={destinationName}
+        setActivitiesExpanded={setActivitiesExpanded}
+        driverName={dudeName}
+      ></ActivityList>
+    </div>
+  );
+};
+
+const ActivityList = ({
+  hidden,
+  destinationName,
+  driverName,
+  setActivitiesExpanded
+}: {
+  hidden: boolean;
+  destinationName: string;
+  driverName: string;
+  setActivitiesExpanded: any;
+}) => {
+  return (
+    <div className={`activities-expanded${!hidden ? " hidden" : ""}`}>
+      <p className="close" onClick={() => setActivitiesExpanded(false)}>
+        ←
+      </p>
+      <h3>Great! You just joined a ride with {driverName}.</h3>
+      <h2>Activities we recommend for {destinationName}:</h2>
+      <div className="activity-item">
+        <p className="activity-sponsored">Sponsored activity</p>
+        <h4 className="activity-name">Guided bird watching tour</h4>
+        <p className="activity-book">Book now</p>
+      </div>
+      <div className="activity-item">
+        <p className="activity-sponsored">Sponsored activity</p>
+        <h4 className="activity-name">Campfire and sausage tasting</h4>
+        <p className="activity-book">Book now</p>
+      </div>
+      <div className="activity-item">
+        <h4 className="activity-name">Relaxing lakeside hike</h4>
+        <p className="activity-book">Read more</p>
+      </div>
+      <div className="activity-item">
+        <h4 className="activity-name">Mountain biking route</h4>
+        <p className="activity-book">Read more</p>
+      </div>
     </div>
   );
 };
