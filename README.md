@@ -1,4 +1,4 @@
-# React-Webpack-TypeScript-Babel-Sass
+# Seikkai.ly frontend
 
 This is a quick-start react template for fast prototyping. It has type-checking with TypeScript, but will compile regardless of the type errors.
 
