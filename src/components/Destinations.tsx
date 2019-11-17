@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getDestinations, Destination } from '../services/destinationsService'
+import { getDestinations, Destination, getVisitors, Visitors } from '../services/destinationsService'
 import 'Styles/Destinations.scss'
 import { Trip, getTripsForDest, joinTrip } from '../services/tripService';
 import moment from 'moment'
@@ -41,23 +41,37 @@ const TripsCard = ({ destinationId, destinationName }: {destinationId: string, d
   )
 }
 
+const CrowdEstimation = ({visitors}: {visitors: Visitors}) => {
+  if (visitors.crowdedness <= 3) {
+    return <span className="crowd-estimation green" /> 
+  } else if (visitors.crowdedness > 3 && visitors.crowdedness <= 7) {
+    return <span className="crowd-estimation yellow" /> 
+  } else if (visitors.crowdedness > 7) {
+    return <span className="crowd-estimation red" /> 
+  }
+  return (<></>)
+}
+
 const DestinationItem =
-({dest, key, setExpanded, setExpandedHidden, expandedHidden}: {dest: Destination, key: number, setExpanded: any, setExpandedHidden: any, expandedHidden: boolean}) =>
+({dest, key, setExpanded, setExpandedHidden, expandedHidden, visitors}: {dest: Destination, key: number, setExpanded: any, setExpandedHidden: any, expandedHidden: boolean, visitors: Visitors | null}) =>
   <li className="destination-item" key={key} onClick={() => {
     setExpandedHidden(!expandedHidden)
     setExpanded(dest)
   }}>
     <p className="destination-title">{dest.name}</p>
-    <span className="crowd-estimation" />
+    {(visitors && dest.name === 'Nuuksio') && <CrowdEstimation visitors={visitors} />}
   </li>
 
 const Destinations = () => {
   const [destinations, setDestinations] = useState<Destination[]>([])
   const [expandedDestination, setExpanded] = useState<Destination | null>(null)
   const [expandedHidden, setExpandedHidden] = useState<boolean>(true)
+  const [visitors, setVisitors] = useState<Visitors | null>(null)
   useEffect(() => {
     getDestinations()
       .then(dest => setDestinations(dest))
+    getVisitors()
+      .then(setVisitors)
   }, [])
 
   return (
@@ -70,7 +84,8 @@ const Destinations = () => {
               key={key}
               setExpanded={setExpanded}
               setExpandedHidden={setExpandedHidden}
-              expandedHidden={expandedHidden} 
+              expandedHidden={expandedHidden}
+              visitors={visitors}
             />)}
         </ul>
       </div>
