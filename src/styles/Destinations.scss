@@ -1,0 +1,79 @@
+.destination-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.destination-ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.destination-item {
+  font-family: 'Roboto', sans-serif;
+}
+
+.destination-item {
+  width: 200px;
+  height: 75px;
+  font-size: 25px;
+  background: linear-gradient(135deg, #379683, #05386b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 2px;
+}
+
+.destination-title {
+  color: #5CDB95;
+}
+
+.destination-expanded {
+  &.hidden {
+    display: none;
+  }
+
+  width: 100%;
+  background: #8ee4af;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.destination-expanded-title {
+  font-family: 'Roboto', sans-serif;
+  color: #05386b;
+  font-size: 32px;
+}
+
+.destination-expanded-description {
+  color: #05386b;
+  font-size: 20px;
+}
+
+.trip-items {
+  list-style: none;
+  padding-left: 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.trip-item {
+  margin: 20px 0px 0px 0px;
+  padding: 15px;
+  background-color: #edf5e1;
+  width: 80%;
+  border-radius: 2px;
+  border: #379683 solid 5px;
+
+  &.danger {
+    border: #e91e63 solid 5px;
+  }
+}
+
+.trip-content {
+  font-size: 15px;
+}

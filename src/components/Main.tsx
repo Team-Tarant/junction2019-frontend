@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import 'Styles/Main.scss';
+import Header from 'Components/Header';
+import Destinations from 'Components/Destinations';
+
 
 export default class Main extends Component {
 
@@ -10,10 +13,8 @@ export default class Main extends Component {
   render() {
     return (
       <div className="main-container">
-        <p>Hi</p>
-        <img
-          src={require('Assets/loading.svg')}>
-        </img>
+        <Header />
+        <Destinations />
       </div>
     )
   }
