@@ -226,7 +226,6 @@ const DestinationItem = ({
   setExpanded,
   setExpandedHidden,
   expandedHidden,
-  visitors
 }: {
   dest: Destination;
   key: number;
