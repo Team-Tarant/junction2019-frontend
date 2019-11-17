@@ -1,4 +1,4 @@
-@import '_vars';
+@import "_vars";
 
 .main-container {
   width: 100vw;
@@ -6,4 +6,10 @@
   max-width: 700px;
   margin: auto;
   padding: 15px;
+
+  // background: url("/src/assets/nuuksio.jpg") no-repeat center center fixed;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
 }

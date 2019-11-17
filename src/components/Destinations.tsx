@@ -47,13 +47,13 @@ const ExpandedDestination = ({
       </p>
       <div className="row">
         <div className="col">
-          <p>Day</p>
+          <p className="date-day">Day</p>
         </div>
         <div className="col">
           <p className="date-adjust" onClick={() => setDay(day + 1)}>
             +
           </p>
-          <h3>{day}</h3>
+          <h2 className="number">{day}</h2>
           <p className="date-adjust" onClick={() => setDay(day - 1)}>
             -
           </p>
@@ -62,13 +62,13 @@ const ExpandedDestination = ({
           <p className="date-adjust" onClick={() => setMonth(month + 1)}>
             +
           </p>
-          <h3>{month}</h3>
+          <h2 className="number">{month}</h2>
           <p className="date-adjust" onClick={() => setMonth(month - 1)}>
             -
           </p>
         </div>
         <div className="col">
-          <p>Month</p>
+          <p className="date-month">Month</p>
         </div>
       </div>
       {visitors ? (
@@ -225,7 +225,7 @@ const DestinationItem = ({
   key,
   setExpanded,
   setExpandedHidden,
-  expandedHidden,
+  expandedHidden
 }: {
   dest: Destination;
   key: number;
