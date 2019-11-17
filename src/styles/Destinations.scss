@@ -10,7 +10,7 @@
 }
 
 .destination-item {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .destination-item {
@@ -26,8 +26,21 @@
   margin: 0px 0px 10px 0px;
 }
 
+.next-button {
+  width: 200px;
+  height: 75px;
+  font-size: 25px;
+  background: linear-gradient(135deg, #379683, #05386b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 2px;
+  margin: 150px 0 0 0;
+}
+
 .destination-title {
-  color: #5CDB95;
+  color: #5cdb95;
 }
 
 .destination-expanded {
@@ -36,7 +49,13 @@
   }
 
   width: 100%;
-  background: #8ee4af;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #5cdb95;
   min-height: 50vh;
   display: flex;
   align-items: center;
@@ -44,7 +63,7 @@
 }
 
 .destination-expanded-title {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #05386b;
   font-size: 32px;
 }
@@ -73,6 +92,11 @@
   &.danger {
     border: #e91e63 solid 5px;
   }
+
+  &.disabled {
+    border: none;
+    background: rgba($color: #000000, $alpha: 0.5)
+  }
 }
 
 .trip-content {
@@ -81,8 +105,7 @@
 
 .crowd-estimation {
   content: " ";
-  width: 10px;
-  height: 10px;
+  padding: 5px;
   background-color: white;
   border-radius: 5px;
   margin: 5px;
@@ -92,10 +115,54 @@
   }
 
   &.yellow {
-    background-color: yellow
+    background-color: yellow;
   }
 
   &.red {
     background-color: red;
   }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-content: space-around;
+}
+
+.row {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-content: space-around;
+}
+
+.date-adjust {
+  font-size: 30px;
+}
+
+.close {
+  width: 93%;
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.trip-expanded {
+  &.hidden {
+    display: none;
+  }
+
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #5cdb95;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

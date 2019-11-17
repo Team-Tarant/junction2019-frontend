@@ -1,15 +1,15 @@
-@import '_vars';
+@import "_vars";
 
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 200px;
+  padding-top: 10px;
 }
 
 .header-title {
-  font-family: 'Bowlby One SC', cursive;
-  font-size: 36px;
-  color: #EDF5E1;
+  font-family: "Bowlby One SC", cursive;
+  font-size: 46px;
+  color: dark-grey;
 }
