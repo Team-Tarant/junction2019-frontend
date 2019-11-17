@@ -26,7 +26,10 @@ const TripsCard = ({ destinationId, destinationName }: {destinationId: string, d
           return (
             <li className={`trip-item${isFull ? ' danger' : ''}`} onClick={() => {
                 joinTrip(trip.id)
-                  .then(() => alert('Trip booked!'))
+                  .then(() => {
+                    getTripsForDest(destinationId).then(setTrips)
+                    alert('Trip booked!')
+                  })
               }}>
               <p className="trip-content">{trip.driverName} is driving to {destinationName} from {trip.from} at {moment(trip.startToDestination).format('DD.MM HH:mm')}</p>
               <p className="trip-status">{isFull ? 'Car is fully booked!' : 'Slots left!'}</p>

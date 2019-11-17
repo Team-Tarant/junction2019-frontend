@@ -23,6 +23,6 @@ export const getTripsForDest = (destinationId: string): Promise<Trip[]> => axios
 
 export const joinTrip = (tripId: string) => axios
   .post(`${ENTRYPOINT}/trips/${tripId}/join`,
-  { participantName: 'Hugo', participantPhone: 'Holmqvist' })
+  { participantName: 'Teppo', participantPhone: '+358500400' })
   .then(({ data }) => data)
 
